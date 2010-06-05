@@ -5,8 +5,8 @@ A set of C# classes for working with v.2 of the Open311 API (GeoReport API V2). 
 This project was created using Mono version 2.4.4 (http://mono-project.com) and MonoDevelop 2.2.1 (http://monodevelop.com/).
 
 A simple example:
+################
 
-<pre>
 using System;
 using Open311API;
 using Open311API.Exception;
@@ -47,4 +47,3 @@ namespace Sample
 		}
 	}
 }
-</pre>
