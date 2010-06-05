@@ -1,0 +1,23 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Open311Sample/Main.cs" ctype="Workbench">
+    <Files>
+      <File FileName="Open311Sample/Main.cs" Line="27" Column="4" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Open311API" expanded="True" selected="True" />
+          <Node name="Sample" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State selected="True" />
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <AuthorInfo Name="Mark headd" Email="mheadd@voiceingov.orb" Copyright="Mark J. Headd, 2010" ctype="AuthorInformation" />
+</Properties>
