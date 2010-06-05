@@ -1,13 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Open311Sample/Main.cs" ctype="Workbench">
-    <Files>
-      <File FileName="Open311Sample/Main.cs" Line="27" Column="4" />
-    </Files>
+  <MonoDevelop.Ide.Workbench ctype="Workbench">
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Open311API" expanded="True" selected="True" />
+        <State expanded="True" selected="True">
+          <Node name="Open311API" expanded="True" />
           <Node name="Sample" expanded="True" />
         </State>
       </Pad>

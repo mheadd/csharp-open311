@@ -100,7 +100,7 @@ namespace Open311API
 			URLString.Append("&service_code=" + serviceCode);
 			URLString.Append("&lat=" + request.Latitude);
 			URLString.Append("&long=" + request.Longitude);
-			URLString.Append("&address_string=" + HttpUtility.UrlEncode(request.Addrress));
+			URLString.Append("&address_string=" + HttpUtility.UrlEncode(request.Address));
 			URLString.Append("&address_id=" + request.Address_id);
 			URLString.Append("&email=" + HttpUtility.UrlEncode(request.Email));
 			URLString.Append("&device_id=" + request.Device_id);

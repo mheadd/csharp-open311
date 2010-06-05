@@ -9,7 +9,7 @@ namespace Open311API.ServiceRequest
 	{
 		public double Latitude { get; set; }
 		public double Longitude { get; set; }
-		public string Addrress { get; set; }
+		public string Address { get; set; }
 		public int Address_id { get; set; }
 		public string Email { get; set; }
 		public string Device_id { get; set; }
@@ -28,7 +28,7 @@ namespace Open311API.ServiceRequest
 		/// </returns>
 		public bool isValid()
 		{
-			if (Latitude == 0 && Longitude == 0 && String.IsNullOrEmpty(Addrress))
+			if (Latitude == 0 && Longitude == 0 && String.IsNullOrEmpty(Address))
 			{
 				return false;
 			}
