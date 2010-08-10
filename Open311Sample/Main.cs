@@ -28,7 +28,8 @@ namespace Sample
 			try 
 			{				
 				Open311 myOpen311 = new Open311(ENDPOINT, JURISDICTION_ID, API_KEY);
-				Console.WriteLine(myOpen311.GetServiceDefinition(ResponseFormat.JSON, SERVICE_CODE));
+				//Console.WriteLine(myOpen311.GetServiceDefinition(ResponseFormat.JSON, SERVICE_CODE));
+				Console.WriteLine(myOpen311.GetServiceList("json"));
 			}
 			catch (Open311Exception ex) 
 			{

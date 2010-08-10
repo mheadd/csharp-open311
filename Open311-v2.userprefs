@@ -1,6 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Open311API/ServiceRequest.cs" ctype="Workbench">
+    <Files>
+      <File FileName="Open311API/ServiceRequest.cs" Line="7" Column="16" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True" selected="True">
