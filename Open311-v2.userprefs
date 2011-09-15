@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Open311API/ServiceRequest.cs" ctype="Workbench">
-    <Files>
-      <File FileName="Open311API/ServiceRequest.cs" Line="7" Column="16" />
-    </Files>
+  <MonoDevelop.Ide.Workbench ctype="Workbench">
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="Open311API" expanded="True" />
+        <State expanded="True">
+          <Node name="Open311API" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Open311.cs" selected="True" />
+          </Node>
           <Node name="Sample" expanded="True" />
         </State>
       </Pad>

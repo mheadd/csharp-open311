@@ -8,8 +8,6 @@ namespace Open311API.Structs
 	public struct ResourceNames 
 	{
 		public static string ServiceRequest = "requests";
-		public static string ServiceDefinition = "service_definition";
-		public static string StatusUpdate = "status_update";
 		public static string Services = "services";
 		public static string Token = "token";
 	}

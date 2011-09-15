@@ -3,10 +3,12 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using Open311API.Exception;
 using Open311API.Structs;
 using Open311API.ServiceRequest;
+using Open311API.RequestListingOptions;
 
 namespace Open311API
 {
@@ -41,6 +43,36 @@ namespace Open311API
 		}
 		
 		/// <summary>
+		/// Overload for Open311 Class constructor (no API key).
+		/// </summary>
+		/// <param name="baseURL">
+		/// A <see cref="System.String"/>
+		/// </param>
+		/// <param name="jurisdictionID">
+		/// A <see cref="System.String"/>
+		/// </param>
+		public Open311(string baseURL, string jurisdictionID)
+		{
+			_baseURL = baseURL;
+			_jurisdictionID = jurisdictionID;
+		}
+		
+		/// <summary>
+		/// Open311 Service discovery.
+		/// </summary>
+		/// <param name="format">
+		/// A <see cref="System.String"/>
+		/// </param>
+		/// <returns>
+		/// A <see cref="System.String"/>
+		/// </returns>
+		public string ServiceDiscovery(string format) 
+		{
+			string URL = _baseURL + "/discovery." + format;
+			return MakeAPIRequest(URL, MethodType.GET);
+		}
+		
+		/// <summary>
 		/// Gets a list of acceptable 311 services and associated service code.
 		/// </summary>
 		/// <param name="format">
@@ -69,8 +101,7 @@ namespace Open311API
 		/// </returns>
 		public string GetServiceDefinition(string format, string serviceCode)
 		{
-			string URL = String.Format(_urlTemplate, _baseURL, ResourceNames.ServiceDefinition, format, _jurisdictionID);
-			URL += "&service_code=" + serviceCode;
+			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.Services, serviceCode, format, _jurisdictionID);
 			return MakeAPIRequest(URL, MethodType.GET);
 		}
 		
@@ -89,7 +120,7 @@ namespace Open311API
 		/// <returns>
 		/// A <see cref="System.String"/>
 		/// </returns>
-		public string PostServiceRequest(string format, string serviceCode, Request request)
+		public string PostServiceRequest(string format, string serviceCode, Request request) 
 		{
 			if(!request.isValid()) 
 			{
@@ -136,6 +167,30 @@ namespace Open311API
 		}
 		
 		/// <summary>
+		/// Get a listing of service requests based on options.
+		/// </summary>
+		/// <param name="format">
+		/// A <see cref="System.String"/>
+		/// </param>
+		/// <param name="options">
+		/// A <see cref="RequestListingOptions"/>
+		/// </param>
+		/// <returns>
+		/// A <see cref="System.String"/>
+		/// </returns>
+		public string GetServiceRequests(string format, Options options)
+		{
+			StringBuilder URLString = new StringBuilder();			
+			URLString.Append(String.Format(_urlTemplate, _baseURL, ResourceNames.ServiceRequest, format, _jurisdictionID));
+			URLString.Append("&service_request_id=" + options.Service_request_id);
+			URLString.Append("&service_code=" + options.Service_code);
+			URLString.Append("&start_date=" + options.Start_date);
+			URLString.Append("&end_date=" + options.End_date);
+			
+			return MakeAPIRequest(URLString.ToString(), MethodType.GET);
+		}
+		
+		/// <summary>
 		/// Query the current status of a request.
 		/// </summary>
 		/// <param name="format">
@@ -147,10 +202,27 @@ namespace Open311API
 		/// <returns>
 		/// A <see cref="System.String"/>
 		/// </returns>
-		public string GetServiceRequests(string format, int serviceRequestID)
+		public string GetServiceRequest(string format, int serviceRequestID) 
 		{
-			string URL = String.Format(_urlTemplate, _baseURL, ResourceNames.ServiceRequest, format, _jurisdictionID);
-			URL += "&service_request_id=" + serviceRequestID;
+			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.ServiceRequest, serviceRequestID, format, _jurisdictionID);
+			return MakeAPIRequest(URL, MethodType.GET);
+		}
+		
+				/// <summary>
+		/// Query the current status of a request.
+		/// </summary>
+		/// <param name="format">
+		/// A <see cref="System.String"/>
+		/// </param>
+		/// <param name="serviceRequestID">
+		/// A <see cref="System.Int32"/>
+		/// </param>
+		/// <returns>
+		/// A <see cref="System.String"/>
+		/// </returns>
+		public string GetServiceRequest(string format, string serviceRequestID)
+		{
+			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.ServiceRequest, serviceRequestID, format, _jurisdictionID);
 			return MakeAPIRequest(URL, MethodType.GET);
 		}
 			
@@ -170,7 +242,12 @@ namespace Open311API
 		{
 			try
 			{
-				ServicePointManager.CertificatePolicy = new CertPolicy();
+				// Override security warnings on Open311 endpoints that use SSL.
+				ServicePointManager.ServerCertificateValidationCallback += delegate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+				{
+					return true;
+				};
+				
 				HttpWebRequest request = WebRequest.Create(URL) as HttpWebRequest;
 				
 				if(method == MethodType.POST)
@@ -191,18 +268,4 @@ namespace Open311API
 			}
 		}
 	}
-	
-	/// <summary>
-	/// Override security warnings on Open311 endpoints that use SSL.
-	/// See http://www.mono-project.com/UsingTrustedRootsRespectfully
-	/// </summary>
-	public class CertPolicy : ICertificatePolicy 
-	{
-		public bool CheckValidationResult (ServicePoint sp, X509Certificate certificate, WebRequest request, int error)
-		{
-			return true;
-		}
-	}
 }
-
-

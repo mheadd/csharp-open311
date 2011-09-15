@@ -21,6 +21,13 @@ namespace Open311API.ServiceRequest
 		public string Media_url { get; set; }
 		
 		/// <summary>
+		/// Class constructor.
+		/// </summary>
+		public Request()
+		{
+		}
+		
+		/// <summary>
 		/// Simple validation for the request object.
 		/// </summary>
 		/// <returns>

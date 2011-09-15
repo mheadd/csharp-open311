@@ -41,6 +41,7 @@
     <Compile Include="Open311.cs" />
     <Compile Include="ServiceRequest.cs" />
     <Compile Include="Exception.cs" />
+    <Compile Include="RequestListingOptions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
