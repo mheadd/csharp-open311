@@ -68,7 +68,7 @@ namespace Open311API
 		/// </returns>
 		public string ServiceDiscovery(string format) 
 		{
-			string URL = _baseURL + "/discovery." + format;
+			string URL = _baseURL + "/discovery." + format.ToLower();
 			return MakeAPIRequest(URL, MethodType.GET);
 		}
 		
@@ -83,7 +83,7 @@ namespace Open311API
 		/// </returns>
 		public string GetServiceList(string format) 
 		{
-			string URL = String.Format(_urlTemplate, _baseURL, ResourceNames.Services, format, _jurisdictionID);
+			string URL = String.Format(_urlTemplate, _baseURL, ResourceNames.Services, format.ToLower(), _jurisdictionID);
 			return MakeAPIRequest(URL, MethodType.GET);
 		}
 		
@@ -101,7 +101,7 @@ namespace Open311API
 		/// </returns>
 		public string GetServiceDefinition(string format, string serviceCode)
 		{
-			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.Services, serviceCode, format, _jurisdictionID);
+			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.Services, serviceCode, format.ToLower(), _jurisdictionID);
 			return MakeAPIRequest(URL, MethodType.GET);
 		}
 		
@@ -128,7 +128,7 @@ namespace Open311API
 			}				
 			
 			StringBuilder URLString = new StringBuilder();			
-			URLString.Append(String.Format(_urlTemplate, _baseURL, ResourceNames.ServiceRequest, format, _jurisdictionID));
+			URLString.Append(String.Format(_urlTemplate, _baseURL, ResourceNames.ServiceRequest, format.ToLower(), _jurisdictionID));
 			URLString.Append("&api_key=" + _apiKey);
 			URLString.Append("&service_code=" + serviceCode);
 			URLString.Append("&lat=" + request.Latitude);
@@ -162,7 +162,7 @@ namespace Open311API
 		/// </returns>
 		public string GetTokenWithRequestId(string format, int tokenID)
 		{
-			string URL = String.Format(_urlTemplate, _baseURL, tokenID , format, _jurisdictionID);
+			string URL = String.Format(_urlTemplate, _baseURL, tokenID , format.ToLower(), _jurisdictionID);
 			return MakeAPIRequest(URL, MethodType.GET);
 		}
 		
@@ -181,7 +181,7 @@ namespace Open311API
 		public string GetServiceRequests(string format, Options options)
 		{
 			StringBuilder URLString = new StringBuilder();			
-			URLString.Append(String.Format(_urlTemplate, _baseURL, ResourceNames.ServiceRequest, format, _jurisdictionID));
+			URLString.Append(String.Format(_urlTemplate, _baseURL, ResourceNames.ServiceRequest, format.ToLower(), _jurisdictionID));
 			URLString.Append("&service_request_id=" + options.Service_request_id);
 			URLString.Append("&service_code=" + options.Service_code);
 			URLString.Append("&start_date=" + options.Start_date);
@@ -204,7 +204,7 @@ namespace Open311API
 		/// </returns>
 		public string GetServiceRequest(string format, int serviceRequestID) 
 		{
-			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.ServiceRequest, serviceRequestID, format, _jurisdictionID);
+			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.ServiceRequest, serviceRequestID, format.ToLower(), _jurisdictionID);
 			return MakeAPIRequest(URL, MethodType.GET);
 		}
 		
@@ -222,7 +222,7 @@ namespace Open311API
 		/// </returns>
 		public string GetServiceRequest(string format, string serviceRequestID)
 		{
-			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.ServiceRequest, serviceRequestID, format, _jurisdictionID);
+			string URL = String.Format(_urlTemplate, _baseURL + ResourceNames.ServiceRequest, serviceRequestID, format.ToLower(), _jurisdictionID);
 			return MakeAPIRequest(URL, MethodType.GET);
 		}
 			

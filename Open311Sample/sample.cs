@@ -14,13 +14,11 @@ namespace Sample
 	{
 		// The development endpoint for the Baltimore City Open311 API.
 		const string ENDPOINT = "http://311test.baltimorecity.gov/open311/v2/";
+		const string SD_ENDPOINT = "http://311test.baltimorecity.gov/open311/";
 		
 		// The jurisdiction ID for Washington DC.
 		const string JURISDICTION_ID = "baltimorecity.gov";
-		
-		// Sample service request ID.
-		const string SERVICE_RQUEST_ID = "4e6cbd2a9dc2f112940000bc";
-		
+			
 		// Sample service code.
 		const string SERVICE_CODE = "4e39a3abd3e2c20ed8000027";
 		
@@ -30,22 +28,28 @@ namespace Sample
 			// Create a new instance of the Open311 object.
 			Open311 report = new Open311(ENDPOINT, JURISDICTION_ID);
 			
-			// Sample service discovery.
-			//Console.WriteLine(ServiceDiscovery(report, ResponseFormat.XML));
+			/*
+			 * Sample service discovery.
+			 */
+			// Open311 report = new Open311(SD_ENDPOINT, JURISDICTION_ID);
+			// Console.WriteLine(ServiceDiscovery(report, ResponseFormat.JSON));
 			
-			// Sample retrieving service list.
-			//Console.WriteLine(GetServiceList(report, ResponseFormat.XML));
+			/**
+			 * Sample retrieving service list.
+			 */
+			// Console.WriteLine(GetServiceList(report, ResponseFormat.JSON));
 			
-			// Sample get service defenition.
-			//Console.WriteLine(GetServiceDefinition(report, ResponseFormat.XML, SERVICE_CODE));
+			/*
+			 * Sample get service defenition.
+			 */ 
+			Console.WriteLine(GetServiceDefinition(report, ResponseFormat.JSON, SERVICE_CODE));
 			
-			// Sample retrieveing a service request.
-			Console.WriteLine(GetServiceRequest(report, ResponseFormat.XML, SERVICE_RQUEST_ID));
-			
-			// Sample retrieving multiple requests.
-			//Options options = new Options();
-			//options.Service_code = SERVICE_CODE;
-			//Console.WriteLine(GetServiceReqeusts(report, ResponseFormat.XML, options));
+			/*
+			 * Sample retrieving multiple requests.
+			 */ 
+			// Options options = new Options();
+			// options.Service_code = SERVICE_CODE;
+			// Console.WriteLine(GetServiceReqeusts(report, ResponseFormat.JSON, options));
 			
 		}
 		
