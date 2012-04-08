@@ -1,9 +1,8 @@
 using System;
 using Open311API;
 using Open311API.Exception;
-using Open311API.ServiceRequest;
-using Open311API.Structs;
 using Open311API.RequestListingOptions;
+using Open311API.Structs;
 
 namespace Sample
 {
