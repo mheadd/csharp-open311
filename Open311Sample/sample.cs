@@ -18,8 +18,8 @@ namespace Sample
 		// The jurisdiction ID for Washington DC.
 		const string JURISDICTION_ID = "baltimorecity.gov";
 			
-		// Sample service code.
-		const string SERVICE_CODE = "4e39a3abd3e2c20ed8000027";
+		// Sample service code (Graffiti removal)
+		const string SERVICE_CODE = "4e39a3aad3e2c20ed800000c";
 		
 		// App entry point.
 		public static void Main (string[] args)
@@ -36,12 +36,12 @@ namespace Sample
 			/**
 			 * Sample retrieving service list.
 			 */
-			// Console.WriteLine(GetServiceList(report, ResponseFormat.JSON));
+			Console.WriteLine(GetServiceList(report, ResponseFormat.JSON));
 			
 			/*
 			 * Sample get service defenition.
 			 */ 
-			Console.WriteLine(GetServiceDefinition(report, ResponseFormat.JSON, SERVICE_CODE));
+			//Console.WriteLine(GetServiceDefinition(report, ResponseFormat.JSON, SERVICE_CODE));
 			
 			/*
 			 * Sample retrieving multiple requests.
